@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<h1>Tweet add</h1>
+	<form id="tweets" action="{{ url_for('handle_tweet') }}" method='post'>
+		<textarea name="tweet_content" rows="10" columns="30"></textarea>
+		<select name="tweet_poster" form="tweets">
+			{% for country in country_list %}
+			<option value="{{ country }}">{{ country }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit">
+	</form>
+	<h1>Speaker Add</h1>
+	<form id="gsl_add" action="{{ url_for('handle_gsl_addition') }}" method='post'>
+		<input type="text" name="speaker">
+		<input type="submit">
+	</form>
+	<h1>Speaker Remove</h1>
+	<form id="gsl_remove" action="{{ url_for('handle_gsl_removal') }}" method='post'>
+		<select name="speaker_removed" form="gsl_remove">
+			{% for speaker in speakers_list %}
+			<option value="{{ speaker }}">{{ speaker }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit">
+	</form>
+	<h1>Trending Topic</h1>
+	<form id="trending_add" action="{{ url_for('handle_trending_addition') }}" method='post'>
+		<input type="text" name="topic">
+		<input type="submit">
+	</form>
+	<h1>Remove Trending Topic</h1>
+	<form id="trending_remove" action="{{ url_for('handle_trending_removal') }}" method='post'>
+		<select name="trending_removed" form="trending_remove">
+			{% for topic in topics %}
+			<option value="{{ topic }}">{{ topic }}</option>
+			{% endfor %}
+			<input type="submit">
+	</form>
+
+</html>

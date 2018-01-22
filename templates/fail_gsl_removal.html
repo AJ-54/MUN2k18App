@@ -1,0 +1,11 @@
+<!-- REDUNDANT -->
+
+
+Failed to remove speaker {{ speaker }} from the gsl list.
+The current gsl list is as follows:<br>
+{% for item in gsl_list %}
+{{ item }}<br>
+{% endfor %}
+<br>
+<a href="{{ url_for('main') }}"> App Home </a><br>
+<a href="{{ url_for('control') }}"> Control </a>
