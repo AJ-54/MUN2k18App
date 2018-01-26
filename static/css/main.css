@@ -1,0 +1,30 @@
+#timeline {
+	width: auto;
+	height: auto;
+	overflow: scroll;
+
+}
+
+#logo-img {
+	max-width: 150px;
+	min-height: 100px;
+}
+
+#logo {
+	position: absolute;
+	top: -2vh;
+	left: 8vw;
+}
+
+#title {
+	background-color: #00BBFF
+	position: absolute;
+	top: 1vh;
+	left: 25vw;
+}
+
+#trending-header {
+	border: 1px;
+	border-radius: 5px;
+	border-color: blue;
+}

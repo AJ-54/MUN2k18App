@@ -37,7 +37,7 @@ def handle_tweet():
 	tweet = request.form['tweet_content']
 	country = request.form['tweet_poster']
 	current_timestamp = datetime.datetime.now()
-	time_str = current_timestamp.strftime("%d-%m-%y %H:%M")
+	time_str = current_timestamp.strftime("%H:%M %d-%m-%y")
 
 	new_tweet = {"content": tweet,
 				 "country": country,
