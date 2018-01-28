@@ -21,7 +21,7 @@ def main():
 
 	trending_topics = get_trending_topics()
 
-	return render_template('index.html', tweets=tweets, countries=countries, timestamps=timestamps, gsl=speakers_list, trending=trending_topics)
+	return render_template('index.html', tweets=reversed(tweets), countries=countries, timestamps=timestamps, gsl=speakers_list, trending=reversed(trending_topics))
 
 @app.route('/control')
 def control():
@@ -39,12 +39,14 @@ def handle_tweet():
 	current_timestamp = datetime.datetime.now()
 	time_str = current_timestamp.strftime("%H:%M %d-%m-%y")
 
+	tweets_list = get_tweets_list()
+
 	new_tweet = {"content": tweet,
 				 "country": country,
-				 "timestamp": time_str
+				 "timestamp": time_str,
+				 "number": len(tweets_list) + 1
 				}
 
-	tweets_list = get_tweets_list()
 	tweets_list.append(new_tweet)
 
 	write_tweets_list(tweets_list)

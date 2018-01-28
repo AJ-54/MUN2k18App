@@ -28,3 +28,8 @@
 	border-radius: 5px;
 	border-color: blue;
 }
+
+.flag {
+	max-height: 10px;
+	max-width: 10px;
+}
