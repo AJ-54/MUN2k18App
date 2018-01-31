@@ -4,6 +4,9 @@ from dataHandling import *
 
 app = Flask(__name__)
 
+def adjust_status(timer_status):
+	return timer_status 
+
 @app.route('/')
 def main():
 	tweets = get_tweets_list()
@@ -21,7 +24,13 @@ def main():
 
 	trending_topics = get_trending_topics()
 
-	return render_template('index.html', tweets=reversed(tweets), countries=countries, timestamps=timestamps, gsl=speakers_list, trending=reversed(trending_topics))
+	timer_status = get_timer_status()
+	timer_status = adjust_status(timer_status)
+
+	return render_template('index.html', tweets=reversed(tweets),
+							countries=countries, timestamps=timestamps,
+							gsl=speakers_list, trending=reversed(trending_topics),
+							timer_status=timer_status)
 
 @app.route('/control')
 def control():
@@ -29,8 +38,9 @@ def control():
 	gsl_speakers_list = get_gsl_list()
 	countries = get_country_list()
 	trending_topics = get_trending_topics()
+	timer_events = ["Unmoderated Caucus", "Party", "Conference"]
 
-	return render_template('control.html', tweet=tweet, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics)
+	return render_template('control.html', tweet=tweet, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events)
 
 @app.route('/handle_tweet', methods=['POST'])
 def handle_tweet():
@@ -105,6 +115,34 @@ def handle_trending_removal():
 	write_trending_topics(topics_list)
 
 	return render_template('success.html', action="removed from", category="trending", item_added=topic)
+
+@app.route('/handle_timer', methods=['POST'])
+def handle_timer():
+	duration = request.form['timer_time']
+	event = request.form['event']
+
+	end_time = datetime.datetime.now() + datetime.timedelta(minutes=float(duration))
+	time_str = end_time.strftime("%b %d, %Y %H:%M:%S")
+
+	payload = {"exists": True,
+			   "end_time": time_str,
+			   "event": event
+			   }
+
+	write_timer_status(payload)	
+
+	return render_template('timer_success.html', duration=duration, event=event)
+
+@app.route('/handle_timer_removal', methods=['POST'])
+def handle_timer_removal():
+	payload = {"exists": False,
+			   "end_time": "lorem_ipsum",
+			   "event": "Lorem ipsum"
+			   }
+
+	write_timer_status(payload)
+
+	return render_template('success.html', action="removed", category="timer")
 
 if __name__ == "__main__":
 	app.run(debug=True)

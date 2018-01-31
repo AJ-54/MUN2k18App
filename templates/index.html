@@ -22,8 +22,13 @@
         </div>
 
     </div>
-    <!-- TIMER -->
     <div style="position:relative;top:23vh;width:98vw" class="">
+        <!-- TIMER -->
+        {% if timer_status.exists==True %}
+        <div align="center" id="timer">
+            <h2 id="timer-main"></h2>
+        </div>
+        {% endif %}
         <div  class="row" style="margin-left:0.5vw">
             <div class="col-lg-3 panel panel-default" style="position:fixed;top:24vh" >
                 <div class="panel-body" style="border-right:1px solid #eee; padding-right:4%">
@@ -51,24 +56,25 @@
                         <h3 data-spy="affix" align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px;"><i style="font-size:24px" class="fa">&#xf099;</i>  Twitter Feed</h3></div><br>
                         {% for tweet in tweets %}
                         {% if tweet.number%2 == 0 %}
-                            <div style="border-style:ridge;border-radius:5px;border-color:blue;" class="tweeter" align="left">
+                            <div style="border-style:ridge;border-radius:5px;border-color:blue;padding:5px;max-width:80%;position:relative;right:10%;" class="tweeter" align="left">
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.country }}.gif">
                                 {{ tweet.country }}
-                            </div>
-                            <br>
+                            <br><br><br>
                             {{ tweet.content }}<br>
+                            </div>
+
                             <div class="meta" align="right">
                                 {{ tweet.timestamp }}
                             </div>
                             <br><br>
                         {% endif %}
                         {% if tweet.number%2 != 0 %}
-                        <div style="border-style:ridge;border-radius:5px;border-color:blue;" class="tweeter" align="right">
+                        <div style="border-style:ridge;border-radius:5px;border-color:blue;padding:5px;max-width:80%;position:relative;left:10%;" class="tweeter" align="right">
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.country }}.gif">
                                 {{ tweet.country }}
-                            </div>
-                            <br>
+                            <br><br><br>
                             {{ tweet.content }}<br>
+                            </div>
                             <div class="meta" align="right">
                                 {{ tweet.timestamp }}
                             </div>
@@ -106,6 +112,35 @@
     </div>
     
     <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script>
+        var end_time = new Date("{{ timer_status.end_time }}").getTime();
+        var x = setInterval(function() {
 
+            // Get todays date and time
+            var now = new Date().getTime();
+    
+            // Find the distance between now an the count down date
+            var distance = end_time - now;
+    
+            // Time calculations for days, hours, minutes and seconds
+            // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+            // Output the result in an element with id="demo"
+            if(hours > 0){
+                document.getElementById("timer-main").innerHTML = "Time left on {{ timer_status.event }} : " + hours + "h " + minutes + "m " + seconds + "s ";
+            } else {
+                document.getElementById("timer-main").innerHTML = "Time left on {{ timer_status.event }} : " + minutes + "m " + seconds + "s ";
+            }   
+    
+            // If the count down is over, write some text 
+            if (distance <= 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>

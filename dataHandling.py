@@ -73,3 +73,27 @@ def write_trending_topics(topics):
 
 	return
 
+def get_timer_status():
+	abs_file_path = os.getcwd()
+	rel_file_path = "data/timer.txt"
+	total_file_path = os.path.join(abs_file_path, rel_file_path)
+
+	timer_status = None
+
+	with open(total_file_path, 'r') as timer_file:
+		try:
+			timer_status = pickle.load(timer_file)
+		except EOFError:
+			pass
+
+	return timer_status
+
+def write_timer_status(payload):
+	abs_file_path = os.getcwd()
+	rel_file_path = "data/timer.txt"
+	total_file_path = os.path.join(abs_file_path, rel_file_path)
+
+	with open(total_file_path, "w") as timer_file:
+		pickle.dump(payload, timer_file)
+
+	return
