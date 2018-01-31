@@ -54,5 +54,9 @@
 	<form id="timer-remove" action="{{ url_for('handle_timer_removal') }}" method='post'>
 		<button type="submit">REMOVE TIMER</button>
 	</form>
+	<h1>Delete All Tweets</h1>
+	<form id="delete_tweets" action="{{ url_for('delete_tweets') }}" method='post'>
+		<button type="submit">DELETE</button>
+	</form>
 </div>
 </html>

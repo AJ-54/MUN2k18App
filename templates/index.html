@@ -37,6 +37,8 @@
                         <span data-spy="affix" style="position:relative;"><h3 align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px">General Speakers List</h3><br></span> 
                         <div id="gsl" style="height:72vh;overflow:hidden">
                             <div align="center" style="overflow:auto">
+                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ gsl_top }}.gif">
+                                <h3>{{ gsl_top }}</h3><br><br>
                                 {% for speaker in gsl %}
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ speaker }}.gif">
                                 <h4>{{ speaker }}</h4><br><br>
@@ -56,10 +58,10 @@
                         <h3 data-spy="affix" align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px;"><i style="font-size:24px" class="fa">&#xf099;</i>  Twitter Feed</h3></div><br>
                         {% for tweet in tweets %}
                         {% if tweet.number%2 == 0 %}
-                            <div style="border-style:ridge;border-radius:5px;border-color:blue;padding:5px;max-width:80%;position:relative;right:10%;" class="tweeter" align="left">
+                            <div style="border-style:solid;border-radius:20px;border-color:black;padding:5px;max-width:80%;position:relative;right:10%;" class="tweeter" align="left">
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.country }}.gif">
                                 {{ tweet.country }}
-                            <br><br><br>
+                            <br><br>
                             {{ tweet.content }}<br>
                             </div>
 
@@ -69,10 +71,10 @@
                             <br><br>
                         {% endif %}
                         {% if tweet.number%2 != 0 %}
-                        <div style="border-style:ridge;border-radius:5px;border-color:blue;padding:5px;max-width:80%;position:relative;left:10%;" class="tweeter" align="right">
+                        <div style="border-style:solid;border-radius:20px;border-color:#00AAFF;padding:5px;max-width:80%;position:relative;left:10%;" class="tweeter" align="right">
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.country }}.gif">
                                 {{ tweet.country }}
-                            <br><br><br>
+                            <br><br>
                             {{ tweet.content }}<br>
                             </div>
                             <div class="meta" align="right">
@@ -91,6 +93,8 @@
                 <div id="trending" class="panel-body" style="position:fixed;top:24vh;left:78%;border-left:1px solid #eee; padding-left:4%">
                     <span id="trending-header" style="position:relative;"><h3 align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px;">Trending</h3></span><br><br>  
                     <div align="center" style="height:72vh;">
+
+                        <h2>{{ trending_top }}</h2><br><br>
 
                         {% for topic in trending %}
 

@@ -29,8 +29,8 @@ def main():
 
 	return render_template('index.html', tweets=reversed(tweets),
 							countries=countries, timestamps=timestamps,
-							gsl=speakers_list, trending=reversed(trending_topics),
-							timer_status=timer_status)
+							gsl=speakers_list[1:], gsl_top=speakers_list[0], trending=reversed(trending_topics[1:]),
+							trending_top=trending_topics[0], timer_status=timer_status)
 
 @app.route('/control')
 def control():
@@ -143,6 +143,12 @@ def handle_timer_removal():
 	write_timer_status(payload)
 
 	return render_template('success.html', action="removed", category="timer")
+
+@app.route('/delete_tweets', methods=['POST'])
+def delete_tweets():
+	write_tweets_list([])
+
+	return render_template('success.html', action="deleted", category='tweets')
 
 if __name__ == "__main__":
 	app.run(debug=True)

@@ -26,7 +26,12 @@ def write_tweets_list(tweets_list):
 	return
 
 def get_country_list():
-	return ["India", "Pakistan", "Bangladesh", "People's Republic of China", "Spain", "The United States of America"]
+	abs_file_path = os.getcwd()
+	rel_file_path = "data/countries_unga.txt"
+	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	with open(total_file_path, 'r') as countries_file:
+		countries_list = countries_file.readlines()
+	return countries_list
 
 def get_gsl_list():
 	abs_file_path = os.getcwd()
