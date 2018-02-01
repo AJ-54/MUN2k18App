@@ -3,8 +3,8 @@ Tanzania
 Ethiopia
 Algeria
  Rwanda
- Democratic Republic of the Congo
- Burkina Faso
+ Democratic republic of the Congo
+ Burkina Fasa
  Botswana
  South Africa
  Nigeria
@@ -26,14 +26,14 @@ Oman
 Turkey
 Iraq
 Pakistan
-Vietnam 
+Vietnam
 Israel
-Philippines
+Phillipines
 Kyrgyzstan
- Japan
+Japan
 Russia
 India
- UAE
+UAE
 Australia
 New Zealand
 Austria
@@ -45,12 +45,12 @@ Greece
 Italy
 Germany
 Switzerland
- Denmark
+Denmark
 Netherlands
 United Kingdom 
 Sweden
 Portugal
-Ireland 
+Ireland
 Finland
 Estonia
 Latvia
@@ -63,6 +63,6 @@ Argentina
 Chile
 Colombia 
 Brazil
-Peru
-Guyana 
+peru
+Guyana
 Trinidad and Tobago
