@@ -1,2 +1,18 @@
 (lp0
-.
+(dp1
+S'content'
+p2
+V
+p3
+sS'country'
+p4
+VTanzania
+p5
+sS'number'
+p6
+I1
+sS'timestamp'
+p7
+S'19:07 01-02-18'
+p8
+sa.
