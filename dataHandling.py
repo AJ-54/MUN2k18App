@@ -1,7 +1,7 @@
 import os
 import pickle
 
-country_matrix_filename = "countries_unga.txt"
+country_matrix_filename = "countries_ecosoc.txt"
 
 def get_tweets_list():
 	abs_file_path = os.getcwd()
@@ -34,7 +34,7 @@ def get_country_list():
 	with open(total_file_path, 'r') as countries_file:
 		countries_list = countries_file.readlines()
 		for i in xrange(len(countries_list)):
-			countries_list[i] = countries_list[i].strip()
+			countries_list[i] = unicode(countries_list[i].strip(), 'utf-8')
 	return countries_list
 
 def get_gsl_list():

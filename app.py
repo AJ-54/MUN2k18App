@@ -27,10 +27,21 @@ def main():
 	timer_status = get_timer_status()
 	timer_status = adjust_status(timer_status)
 
+	first_gsl = None
+	first_trending = None
+
+	if len(speakers_list) > 0:
+		first_gsl = speakers_list[0]
+		speakers_list = speakers_list[1:]
+
+	if len(trending_topics) > 0:
+		first_trending = trending_topics[0]
+		trending_topics = trending_topics[1:]
+
 	return render_template('index.html', tweets=reversed(tweets),
 							countries=countries, timestamps=timestamps,
-							gsl=speakers_list[1:], gsl_top=speakers_list[0], trending=reversed(trending_topics[1:]),
-							trending_top=trending_topics[0], timer_status=timer_status)
+							gsl=speakers_list, gsl_top=first_gsl, trending=reversed(trending_topics),
+							trending_top=first_trending, timer_status=timer_status)
 
 @app.route('/control')
 def control():
