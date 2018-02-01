@@ -12,6 +12,7 @@ def main():
 	tweets = get_tweets_list()
 	tweet_contents = []
 	countries = []
+	country_filenames = []
 	timestamps = []
 
 	for tweet in tweets:
@@ -19,8 +20,10 @@ def main():
 		countries.append(tweet['country'])
 		timestamps.append(tweet['timestamp'])
 
+	tweet_filenames = convert_to_filename(countries)
 
 	speakers_list = get_gsl_list()
+	speakers_filenames = convert_to_filename(speakers_list)
 
 	trending_topics = get_trending_topics()
 
@@ -29,6 +32,12 @@ def main():
 
 	first_gsl = None
 	first_trending = None
+	first_tweet_filename = None
+	first_speaker_filename = None
+
+	if len(speakers_filenames) > 0:
+		first_speaker_filename = speakers_filenames[0]
+		speakers_filenames = speakers_filenames[1:]
 
 	if len(speakers_list) > 0:
 		first_gsl = speakers_list[0]
@@ -41,7 +50,9 @@ def main():
 	return render_template('index.html', tweets=reversed(tweets),
 							countries=countries, timestamps=timestamps,
 							gsl=speakers_list, gsl_top=first_gsl, trending=reversed(trending_topics),
-							trending_top=first_trending, timer_status=timer_status)
+							trending_top=first_trending, timer_status=timer_status,
+							gsl_top_filename=first_speaker_filename, gsl_filenames=speakers_filenames,
+							tweet_filenames=tweet_filenames)
 
 @app.route('/control')
 def control():
@@ -49,7 +60,7 @@ def control():
 	gsl_speakers_list = get_gsl_list()
 	countries = get_country_list()
 	trending_topics = get_trending_topics()
-	timer_events = ["Unmoderated Caucus", "Party", "Conference"]
+	timer_events = ["Unmoderated Caucus", "Moderated Caucus", "Conference"]
 
 	return render_template('control.html', tweet=tweet, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events)
 

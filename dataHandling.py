@@ -2,6 +2,29 @@ import os
 import pickle
 
 country_matrix_filename = "countries_ecosoc.txt"
+country_to_filename = {"Democratic republic of the Congo":"Democratic-Republic-of-the-Congo",
+					   "Burkina Fasa":"Burkina-Faso",
+					   "South Africa":"South-Africa",
+					   "Saudi Arabia":"Saudi-Arabia",
+					   "South Korea":"South-Korea",
+					   "North Korea":"North-Korea",
+					   "UAE":"United Arab Emirates",
+					   "New Zealand":"New-Zealand",
+					   "United Kingdom":"United-Kingdom",
+					   "United States of America":"United-States",
+					   "Antigua and Barbuda":"Antigua-and-Barbuda",
+					   "Trinidad and Tobago":"Trinidad-and-Tobago",
+					   "European Union":"European-Union",
+					   "Marshall Islands":"Marshall-Islands",
+					   "Sri Lanka":"Sri-Lanka"
+					   }
+
+def convert_to_filename(country_names):
+	for country_name in country_names:
+		if country_name in country_to_filename.keys():
+			return country_to_filename[country_name]
+		else:
+			return country_name
 
 def get_tweets_list():
 	abs_file_path = os.getcwd()
