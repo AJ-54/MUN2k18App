@@ -43,8 +43,8 @@
                                 {% endif %}
                                 {% for speaker in gsl %}
                                 {% for filename in tweet_filenames %}
-                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ filename }}.png">
-                                <h4>{{ speaker }}</h4><br><br>
+                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ speaker.filename }}.png">
+                                <h4>{{ speaker.speaker }}</h4><br><br>
                                 {% endfor %}
                                 {% endfor %}
                             </div>

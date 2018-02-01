@@ -25,6 +25,11 @@ def main():
 	speakers_list = get_gsl_list()
 	speakers_filenames = convert_to_filename(speakers_list)
 
+	for i in xrange(len(speakers_list)):
+		speakers_list[i] = {"speaker": speakers_list[i],
+							"filename": speakers_filenames[i]
+							}
+
 	trending_topics = get_trending_topics()
 
 	timer_status = get_timer_status()
