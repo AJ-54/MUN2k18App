@@ -2,13 +2,13 @@ Kenya
 Tanzania
 Ethiopia
 Algeria
- Rwanda
- Democratic republic of the Congo
- Burkina Fasa
- Botswana
- South Africa
- Nigeria
- Zimbabwe
+Rwanda
+Democratic republic of the Congo
+Burkina Fasa
+Botswana
+South Africa
+Nigeria
+Zimbabwe
 Saudi Arabia
 Kuwait
 South Korea
@@ -20,7 +20,7 @@ Malaysia
 China
 Indonesia
 Georgia
-Thailand 
+Thailand
 Iran
 Oman
 Turkey
@@ -47,7 +47,7 @@ Germany
 Switzerland
 Denmark
 Netherlands
-United Kingdom 
+United Kingdom
 Sweden
 Portugal
 Ireland
@@ -61,8 +61,8 @@ Antigua and Barbuda
 Panama
 Argentina
 Chile
-Colombia 
+Colombia
 Brazil
-peru
+Peru
 Guyana
 Trinidad and Tobago
