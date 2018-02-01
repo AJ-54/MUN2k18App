@@ -1,8 +1,4 @@
 (lp0
-VBangladesh
+VIndia
 p1
-aVSpain
-p2
-aVUSA
-p3
 a.

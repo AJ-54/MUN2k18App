@@ -1,18 +1,2 @@
 (lp0
-(dp1
-S'content'
-p2
-Vhdem thi \u000a-telgana
-p3
-sS'country'
-p4
-VIndia\u000a
-p5
-sS'number'
-p6
-I1
-sS'timestamp'
-p7
-S'17:33 01-02-18'
-p8
-sa.
+.
