@@ -1,6 +1,8 @@
 import os
 import pickle
 
+country_matrix_filename = "countries_unga.txt"
+
 def get_tweets_list():
 	abs_file_path = os.getcwd()
 	rel_file_path = "data/tweets.txt"
@@ -27,10 +29,12 @@ def write_tweets_list(tweets_list):
 
 def get_country_list():
 	abs_file_path = os.getcwd()
-	rel_file_path = "data/countries_unga.txt"
+	rel_file_path = "data/%s" %(country_matrix_filename)
 	total_file_path = os.path.join(abs_file_path, rel_file_path)
 	with open(total_file_path, 'r') as countries_file:
 		countries_list = countries_file.readlines()
+		for i in xrange(len(countries_list)):
+			countries_list[i] = countries_list[i].strip()
 	return countries_list
 
 def get_gsl_list():
