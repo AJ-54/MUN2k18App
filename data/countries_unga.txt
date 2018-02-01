@@ -23,7 +23,7 @@ Kuwait
 Liberia
 Marshall Islands
 Netherlands
-New Zealand 
+New Zealand
 Nigeria
 Norway
 Panama
@@ -42,5 +42,5 @@ Turkey
 Ukraine
 UAE
 United States Of America
-United kingdom
-Vietnam      
+United Kingdom
+Vietnam  
