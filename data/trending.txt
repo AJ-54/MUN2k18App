@@ -1,4 +1,2 @@
 (lp0
-Vadsj hldk jaf
-p1
-a.
+.

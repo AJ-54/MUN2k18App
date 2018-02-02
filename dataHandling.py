@@ -16,11 +16,53 @@ country_to_filename = {"Democratic republic of the Congo":"Democratic-Republic-o
 					   "Trinidad and Tobago":"Trinidad-and-Tobago",
 					   "European Union":"European-Union",
 					   "Marshall Islands":"Marshall-Islands",
-					   "Sri Lanka":"Sri-Lanka"
+					   "Sri Lanka":"Sri-Lanka",
+					   "International Press":"IP",
+					   "Aleut International Association":"aleut",
+					   "Arctic Athabaskan Council":"arctic_atha",
+					   "Inuit Circumpolar Council":"inuit",
+					   "Gwich'in Council International":"gwich",
+					   "Russian Association of Indegenous peoples of the North (RAIPON)":"raipon",
+					   "Saami Council":"saami",
+					   "World Wildlife Fund":"wwf",
+					   "International Labor Organization":"ilo"
 					   }
+
+party_status = {"Aam_Aadmi_Party":["Patiala (Punjab)"],
+				"All_India_Trinamool_Congress":["Jadavpur (West Bengal)", "Balurghat (West Bengal)"],
+				"AIUDF":["Barpeta (Assam)", "Karimganj (SC)(Assam)"],
+				"Apna_Dal":["Mirzapur (Uttar Pradesh)"],
+				"Bharatiya_Janata_Party":["Ahmedabad East (Gujarat)", "Arunachal West (Arunachal Pradesh)","Bangalore Central (Karnataka)","Beed (Maharashtra)","Chandigarh (Chandigarh)","Dibrugarh (Assam)","Gandhinagar (Gujarat)","Gauhati (Assam)","Hardwar (Uttarakhand)","Indore (Madhya Pradesh)","Jaipur (Rajasthan)","Jamnagar (Gujarat)","Jorhat (Assam)","Mathura (Uttar Pradesh)","New Delhi (NCT of Delhi)","Patna Sahib (Bihar)","Shimoga (Karnataka)","Tezpur (Assam)","Vadodara (Gujarat)","Vidisha (Madhya Pradesh)"],
+				"Biju_Janata_Dal":["Balasore","Puri (Odisha)"],
+				"Indian_National_Congress":["Alappuzha (Kerala)","Amritsar (Punjab)","Arunachal East (Arunachal Pradesh)","Gulbarga (Karnataka)","Guna (Madhya Pradesh)","Inner Manipur (Manipur)","Jangipur (West Bengal)","Kishanganj (Bihar)","Rohtak (Haryana)","Silchar (Assam)","Thiruvananthapuram (Kerala)"],
+				"RSP":["Kollam (Kerala)"]
+				}
+
+def convert_constituency(constituency):
+	for party in party_status.keys():
+		if constituency in party_status[party]:
+			return party
+
+def search_constituency(constituency):
+	for a in party_status.keys():
+		if constituency in party_status[a]:
+			return True
+
+	return False
 
 def convert_to_filename(country_names):
 	filenames_final = []
+
+	try:
+		if search_constituency(country_names[0]):
+			# LOK SABHA
+			for constituency in country_names:
+				filenames_final.append(convert_constituency(constituency))
+
+			return filenames_final
+
+	except:
+		return filenames_final
 
 	for country_name in country_names:
 		if country_name in country_to_filename.keys():

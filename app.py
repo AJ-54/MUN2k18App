@@ -62,13 +62,13 @@ def main():
 
 @app.route('/control')
 def control():
-	tweet = ""
 	gsl_speakers_list = get_gsl_list()
 	countries = get_country_list()
 	trending_topics = get_trending_topics()
-	timer_events = ["Unmoderated Caucus", "Moderated Caucus", "Conference"]
+	tweets = get_tweets_list()
+	timer_events = ["Unmoderated Caucus", "Moderated Caucus", "Conference", "Current Session"]
 
-	return render_template('control.html', tweet=tweet, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events)
+	return render_template('control.html', tweets=tweets, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events)
 
 @app.route('/handle_tweet', methods=['POST'])
 def handle_tweet():
@@ -93,7 +93,7 @@ def handle_tweet():
 
 @app.route('/handle_gsl_addition', methods=['POST'])
 def handle_gsl_addition():
-	speaker = request.form['speaker']
+	speaker = request.form['gsl_speaker']
 	speakers_list = get_gsl_list()
 
 	if speaker in speakers_list:
@@ -177,6 +177,21 @@ def delete_tweets():
 	write_tweets_list([])
 
 	return render_template('success.html', action="deleted", category='tweets')
+
+@app.route('/handle_tweet_removal', methods=['POST'])
+def handle_tweet_removal():
+	tweet = request.form['tweet_removed']
+
+	tweets = get_tweets_list()
+
+	for item in tweets:
+		if item['content'] == tweet:
+			tweets.remove(item)
+			write_tweets_list(tweets)
+			return render_template('success.html', action="removed from", category="tweets", item_added=tweet)
+
+ 	return "FAIL. SHOULDN'T BE SHOWN"
+
 
 if __name__ == "__main__":
 	app.run(debug=True)

@@ -17,7 +17,11 @@
 	</form>
 	<h1>Add Speaker</h1>
 	<form id="gsl_add" action="{{ url_for('handle_gsl_addition') }}" method='post'>
-		<input type="text" name="speaker">
+		<select name="gsl_speaker" form="gsl_add">
+			{% for country in country_list %}
+			<option value="{{ country }}">{{ country }}</option>
+			{% endfor %}
+		</select>
 		<input type="submit">
 	</form>
 	<h1>Remove Speaker</h1>
@@ -62,6 +66,17 @@
 	<form id="delete_tweets" action="{{ url_for('delete_tweets') }}" method='post'>
 		<button type="submit">DELETE</button>
 	</form>
+
+	<!-- REMOVE TWEET NO WORK 
+	<h1>Remove Tweet</h1>
+	<form id="tweet_remove" action="{{ url_for('handle_tweet_removal') }}" method='post'>
+		<select name="tweet_removed" form="tweet_remove">
+			{% for tweet in tweets %}
+			<option value="{{ topic }}">{{ tweet.conte }}</option>
+			{% endfor %}
+			<input type="submit">
+	</form>
+	-->
 </div>
 </body>
 </html>

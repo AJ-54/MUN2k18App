@@ -63,7 +63,7 @@
                             <div style="font-family:Century Gothic,arial,sans-serif;border-style:solid;border-radius:20px;border-color:black;padding:5px;max-width:80%;position:relative;right:10%;" class="tweeter" align="left">
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.filename }}.png">
                                 <h4>{{ tweet.country }}</h4>
-                            <br><br>
+                            <br>
                             <h4>{{ tweet.content }}</h4><br>
                             </div>
 
@@ -76,7 +76,7 @@
                         <div style="border-style:solid;border-radius:20px;border-color:#00AAFF;padding:5px;max-width:80%;position:relative;left:10%;" class="tweeter" align="right">
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.filename }}.png">
                                 <h4>{{ tweet.country }}</h4>
-                            <br><br>
+                            <br>
                             <h4>{{ tweet.content }}</h4><br>
                             </div>
                             <div class="meta" align="right">
@@ -137,9 +137,9 @@
     
             // Output the result in an element with id="demo"
             if(hours > 0){
-                document.getElementById("timer-main").innerHTML = "Time left on {{ timer_status.event }} : " + hours + "h " + minutes + "m " + seconds + "s ";
+                document.getElementById("timer-main").innerHTML = "Time left ({{ timer_status.event }}) : " + hours + "h " + minutes + "m " + seconds + "s ";
             } else {
-                document.getElementById("timer-main").innerHTML = "Time left on {{ timer_status.event }} : " + minutes + "m " + seconds + "s ";
+                document.getElementById("timer-main").innerHTML = "Time left ({{ timer_status.event }}) : " + minutes + "m " + seconds + "s ";
             }   
     
             // If the count down is over, write some text 
