@@ -20,11 +20,15 @@ country_to_filename = {"Democratic republic of the Congo":"Democratic-Republic-o
 					   }
 
 def convert_to_filename(country_names):
+	filenames_final = []
+
 	for country_name in country_names:
 		if country_name in country_to_filename.keys():
-			return country_to_filename[country_name]
+			filenames_final.append(country_to_filename[country_name])
 		else:
-			return country_name
+			filenames_final.append(country_name)
+
+	return filenames_final
 
 def get_tweets_list():
 	abs_file_path = os.getcwd()

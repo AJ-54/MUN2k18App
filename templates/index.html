@@ -42,10 +42,8 @@
                                 <h2>{{ gsl_top }}</h2><br><br>
                                 {% endif %}
                                 {% for speaker in gsl %}
-                                {% for filename in tweet_filenames %}
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ speaker.filename }}.png">
-                                <h4>{{ speaker.speaker }}</h4><br><br>
-                                {% endfor %}
+                                <h4>{{ speaker.country }}</h4><br><br>
                                 {% endfor %}
                             </div>
                             
@@ -62,11 +60,11 @@
                         <h3 data-spy="affix" align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px;"><i style="font-size:24px" class="fa">&#xf099;</i>  Twitter Feed</h3></div><br>
                         {% for tweet in tweets %}
                         {% if tweet.number%2 == 0 %}
-                            <div style="border-style:solid;border-radius:20px;border-color:black;padding:5px;max-width:80%;position:relative;right:10%;" class="tweeter" align="left">
-                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.country }}.png">
-                                {{ tweet.country }}
+                            <div style="font-family:Century Gothic,arial,sans-serif;border-style:solid;border-radius:20px;border-color:black;padding:5px;max-width:80%;position:relative;right:10%;" class="tweeter" align="left">
+                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.filename }}.png">
+                                <h4>{{ tweet.country }}</h4>
                             <br><br>
-                            {{ tweet.content }}<br>
+                            <h4>{{ tweet.content }}</h4><br>
                             </div>
 
                             <div class="meta" align="right">
@@ -76,10 +74,10 @@
                         {% endif %}
                         {% if tweet.number%2 != 0 %}
                         <div style="border-style:solid;border-radius:20px;border-color:#00AAFF;padding:5px;max-width:80%;position:relative;left:10%;" class="tweeter" align="right">
-                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.country }}.png">
-                                {{ tweet.country }}
+                                <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ tweet.filename }}.png">
+                                <h4>{{ tweet.country }}</h4>
                             <br><br>
-                            {{ tweet.content }}<br>
+                            <h4>{{ tweet.content }}</h4><br>
                             </div>
                             <div class="meta" align="right">
                                 {{ tweet.timestamp }}

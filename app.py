@@ -21,12 +21,14 @@ def main():
 		timestamps.append(tweet['timestamp'])
 
 	tweet_filenames = convert_to_filename(countries)
+	for i in xrange(len(tweet_filenames)):
+		tweets[i]['filename'] = tweet_filenames[i]
 
 	speakers_list = get_gsl_list()
 	speakers_filenames = convert_to_filename(speakers_list)
 
 	for i in xrange(len(speakers_list)):
-		speakers_list[i] = {"speaker": speakers_list[i],
+		speakers_list[i] = {"country": speakers_list[i],
 							"filename": speakers_filenames[i]
 							}
 
@@ -37,15 +39,14 @@ def main():
 
 	first_gsl = None
 	first_trending = None
-	first_tweet_filename = None
 	first_speaker_filename = None
 
 	if len(speakers_filenames) > 0:
-		first_speaker_filename = speakers_filenames[0]
-		speakers_filenames = speakers_filenames[1:]
+		first_speaker_filename = speakers_list[0]['filename']
+		speakers_filenames = speakers_list[1:]
 
 	if len(speakers_list) > 0:
-		first_gsl = speakers_list[0]
+		first_gsl = speakers_list[0]['country']
 		speakers_list = speakers_list[1:]
 
 	if len(trending_topics) > 0:
@@ -57,7 +58,7 @@ def main():
 							gsl=speakers_list, gsl_top=first_gsl, trending=reversed(trending_topics),
 							trending_top=first_trending, timer_status=timer_status,
 							gsl_top_filename=first_speaker_filename, gsl_filenames=speakers_filenames,
-							tweet_filenames=tweet_filenames)
+							)
 
 @app.route('/control')
 def control():
