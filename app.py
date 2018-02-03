@@ -24,7 +24,7 @@ def main():
 	for i in xrange(len(tweet_filenames)):
 		tweets[i]['filename'] = tweet_filenames[i]
 
-	speakers_list = get_gsl_list()
+	speakers_list = get_gsl_list("speakers.txt")
 	speakers_filenames = convert_to_filename(speakers_list)
 
 	for i in xrange(len(speakers_list)):
@@ -62,13 +62,14 @@ def main():
 
 @app.route('/control')
 def control():
-	gsl_speakers_list = get_gsl_list()
+	gsl_speakers_list = get_gsl_list("speakers.txt")
+	gsl_speakers_list_total = get_gsl_list("speakers_total.txt")
 	countries = get_country_list()
 	trending_topics = get_trending_topics()
 	tweets = get_tweets_list()
 	timer_events = ["Unmoderated Caucus", "Moderated Caucus", "Conference", "Current Session"]
 
-	return render_template('control.html', tweets=tweets, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events)
+	return render_template('control.html', tweets=tweets, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events, speakers_total=gsl_speakers_list_total)
 
 @app.route('/handle_tweet', methods=['POST'])
 def handle_tweet():
@@ -94,28 +95,43 @@ def handle_tweet():
 @app.route('/handle_gsl_addition', methods=['POST'])
 def handle_gsl_addition():
 	speaker = request.form['gsl_speaker']
-	speakers_list = get_gsl_list()
+	speakers_list = get_gsl_list("speakers.txt")
 
 	if speaker in speakers_list:
 		return "SPEAKER ALREADY PRESENT"
 
 	speakers_list.append(speaker)
 
-	write_gsl_list(speakers_list)
+	write_gsl_list(speakers_list, "speakers.txt")
+	write_gsl_list(speakers_list, "speakers_total.txt")
 
 	return render_template('success.html', action="added to", category="GSL", item_added=speaker)
 
 @app.route('/handle_gsl_removal', methods=['POST'])
 def handle_gsl_removal():
 	speaker = request.form['speaker_removed']
-	speakers_list = get_gsl_list()
+	speakers_list = get_gsl_list("speakers.txt")
 
 	if speaker in speakers_list:
 		speakers_list.remove(speaker)
 	else:
 		return render_template('fail_gsl_removal.html', speaker=speaker, gsl_list=speakers_list)
 
-	write_gsl_list(speakers_list)
+	write_gsl_list(speakers_list, "speakers.txt")
+
+	return render_template('success.html', action="removed from", category="GSL", item_added=speaker)
+
+@app.route('/handle_gsl_removal_total', methods=['POST'])
+def handle_gsl_removal_total():
+	speaker = request.form['speaker_removed_total']
+	speakers_list = get_gsl_list("speakers_total.txt")
+
+	if speaker in speakers_list:
+		speakers_list.remove(speaker)
+	else:
+		return render_template('fail_gsl_removal.html', speaker=speaker, gsl_list=speakers_list)
+
+	write_gsl_list(speakers_list, "speakers_total.txt")
 
 	return render_template('success.html', action="removed from", category="GSL", item_added=speaker)
 

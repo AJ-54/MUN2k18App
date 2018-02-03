@@ -25,7 +25,8 @@ country_to_filename = {"Democratic republic of the Congo":"Democratic-Republic-o
 					   "Russian Association of Indegenous peoples of the North (RAIPON)":"raipon",
 					   "Saami Council":"saami",
 					   "World Wildlife Fund":"wwf",
-					   "International Labor Organization":"ilo"
+					   "International Labor Organization":"ilo",
+					   "UAE":"United-Arab-Emirates"
 					   }
 
 party_status = {"Aam_Aadmi_Party":["Patiala (Punjab)"],
@@ -106,9 +107,9 @@ def get_country_list():
 			countries_list[i] = unicode(countries_list[i].strip(), 'utf-8')
 	return countries_list
 
-def get_gsl_list():
+def get_gsl_list(filename):
 	abs_file_path = os.getcwd()
-	rel_file_path = "data/speakers.txt"
+	rel_file_path = "data/%s"%(filename)
 	total_file_path = os.path.join(abs_file_path, rel_file_path)
 	speakers_list = []
 	with open(total_file_path, "r") as gsl_file:
@@ -119,9 +120,9 @@ def get_gsl_list():
 
 	return speakers_list
 
-def write_gsl_list(speakers_list):
+def write_gsl_list(speakers_list, filename):
 	abs_file_path = os.getcwd()
-	rel_file_path = "data/speakers.txt"
+	rel_file_path = "data/%s"%(filename)
 	total_file_path = os.path.join(abs_file_path, rel_file_path)
 	with open(total_file_path, 'w') as speakers_file:
 		pickle.dump(speakers_list, speakers_file)
