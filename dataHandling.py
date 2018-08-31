@@ -39,6 +39,11 @@ party_status = {"Aam_Aadmi_Party":["Patiala (Punjab)"],
 				"RSP":["Kollam (Kerala)"]
 				}
 
+home_dir = os.getcwd()
+current_data_dir = os.path.join(home_dir, "data/current/")
+static_data_dir = os.path.join(home_dir, "data/static/")
+
+
 def convert_constituency(constituency):
 	for party in party_status.keys():
 		if constituency in party_status[party]:
@@ -74,12 +79,10 @@ def convert_to_filename(country_names):
 	return filenames_final
 
 def get_tweets_list():
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/tweets.txt"
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	tweets_file_path = os.path.join(current_data_dir, "tweets.txt")
 
 	tweets_list = []
-	with open(total_file_path, "r") as tweet_file:
+	with open(tweets_file_path, "r") as tweet_file:
 		try:
 			tweets_list = pickle.load(tweet_file)
 		except EOFError:
@@ -88,31 +91,27 @@ def get_tweets_list():
 	return tweets_list
 
 def write_tweets_list(tweets_list):
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/tweets.txt"
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	tweets_file_path = os.path.join(current_data_dir, "tweets.txt")
 
-	with open(total_file_path, "w") as tweet_file:
+	with open(tweets_file_path, "w") as tweet_file:
 		pickle.dump(tweets_list, tweet_file)
 
 	return
 
 def get_country_list():
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/%s" %(country_matrix_filename)
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
-	with open(total_file_path, 'r') as countries_file:
+	country_matrix_file_path = os.path.join(static_data_dir, country_matrix_filename)
+
+	with open(country_matrix_file_path, 'r') as countries_file:
 		countries_list = countries_file.readlines()
 		for i in xrange(len(countries_list)):
 			countries_list[i] = unicode(countries_list[i].strip(), 'utf-8')
 	return countries_list
 
 def get_gsl_list(filename):
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/%s"%(filename)
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	gsl_file_path = os.path.join(current_data_dir, filename)
+
 	speakers_list = []
-	with open(total_file_path, "r") as gsl_file:
+	with open(gsl_file_path, "r") as gsl_file:
 		try:
 			speakers_list = pickle.load(gsl_file)
 		except EOFError:
@@ -121,20 +120,17 @@ def get_gsl_list(filename):
 	return speakers_list
 
 def write_gsl_list(speakers_list, filename):
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/%s"%(filename)
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
-	with open(total_file_path, 'w') as speakers_file:
+	gsl_file_path = os.path.join(current_data_dir, filename)
+
+	with open(gsl_file_path, 'w') as speakers_file:
 		pickle.dump(speakers_list, speakers_file)
 
 def get_trending_topics():
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/trending.txt"
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	trending_file_path = os.path.join(current_data_dir, "trending.txt")
 
 	trending = []
 
-	with open(total_file_path, 'r') as trending_file:
+	with open(trending_file_path, 'r') as trending_file:
 		try:
 			trending = pickle.load(trending_file)
 		except EOFError:
@@ -143,23 +139,19 @@ def get_trending_topics():
 	return trending
 
 def write_trending_topics(topics):
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/trending.txt"
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	trending_file_path = os.path.join(current_data_dir, "trending.txt")
 
-	with open(total_file_path, 'w') as trending_file:
+	with open(trending_file_path, 'w') as trending_file:
 		pickle.dump(topics, trending_file)
 
 	return
 
 def get_timer_status():
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/timer.txt"
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	timer_file_path = os.path.join(current_data_dir, "timer.txt")
 
 	timer_status = None
 
-	with open(total_file_path, 'r') as timer_file:
+	with open(timer_file_path, 'r') as timer_file:
 		try:
 			timer_status = pickle.load(timer_file)
 		except EOFError:
@@ -168,11 +160,9 @@ def get_timer_status():
 	return timer_status
 
 def write_timer_status(payload):
-	abs_file_path = os.getcwd()
-	rel_file_path = "data/timer.txt"
-	total_file_path = os.path.join(abs_file_path, rel_file_path)
+	timer_file_path = os.path.join(current_data_dir, "timer.txt")
 
-	with open(total_file_path, "w") as timer_file:
+	with open(timer_file_path, "w") as timer_file:
 		pickle.dump(payload, timer_file)
 
 	return

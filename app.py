@@ -55,7 +55,7 @@ def main():
 
 	return render_template('index.html', tweets=reversed(tweets),
 							countries=countries, timestamps=timestamps,
-							gsl=speakers_list, gsl_top=first_gsl, trending=reversed(trending_topics),
+							gsl=speakers_list, gsl_top=first_gsl, trending=trending_topics,
 							trending_top=first_trending, timer_status=timer_status,
 							gsl_top_filename=first_speaker_filename, gsl_filenames=speakers_filenames,
 							)
@@ -206,8 +206,7 @@ def handle_tweet_removal():
 			write_tweets_list(tweets)
 			return render_template('success.html', action="removed from", category="tweets", item_added=tweet)
 
- 	return "FAIL. SHOULDN'T BE SHOWN"
-
+	return "This should never happen"
 
 if __name__ == "__main__":
 	app.run(debug=True)
