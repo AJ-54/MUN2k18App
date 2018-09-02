@@ -1,9 +1,10 @@
 import os
 import pickle
 
-country_matrix_filename = "countries_ecosoc.txt"
-country_to_filename = {"Democratic republic of the Congo":"Democratic-Republic-of-the-Congo",
-					   "Burkina Fasa":"Burkina-Faso",
+country_matrix_filename = "countries_unhrc_2018_workshop.txt"
+country_to_filename = {"Democratic Republic of Congo":"Democratic-Republic-of-the-Congo",
+					   "Dominican Republic":"Dominican-Republic",
+					   "Burkina Faso":"Burkina-Faso",
 					   "South Africa":"South-Africa",
 					   "Saudi Arabia":"Saudi-Arabia",
 					   "South Korea":"South-Korea",
@@ -26,7 +27,13 @@ country_to_filename = {"Democratic republic of the Congo":"Democratic-Republic-o
 					   "Saami Council":"saami",
 					   "World Wildlife Fund":"wwf",
 					   "International Labor Organization":"ilo",
-					   "UAE":"United-Arab-Emirates"
+					   "UAE":"United-Arab-Emirates",
+					   "United Arab Emirates":"United-Arab-Emirates",
+					   "Sierra Leone":"Sierra-Leone",
+					   "DPRK(North Korea)":"North-Korea",
+					   "South Sudan":"South-Sudan",
+					   "Czech Republic":"Czech-Republic",
+					   "Bosnia and Herzegovina":"Bosnia-and-Herzegovina",
 					   }
 
 party_status = {"Aam_Aadmi_Party":["Patiala (Punjab)"],

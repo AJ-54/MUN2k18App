@@ -1,8 +1,18 @@
 (lp0
-VUAE
+VGuatemala
 p1
-aVUnited Kingdom
+aVSouth Africa
 p2
-aVAlgeria
+aVMyanmar
 p3
+aVDominican Republic
+p4
+aVMalaysia
+p5
+aVUnited Kingdom
+p6
+aVSwitzerland
+p7
+aVUruguay
+p8
 a.
