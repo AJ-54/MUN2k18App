@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IIT Guwahati Model United Nations</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/font-awesome.css') }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body style="background-color:white">
+	<div style="position:fixed;top:0px;height:3vh;background-color:#00BFFF
+    ;width:100vw;right:0px;z-index:100"></div>
+    <div id="header" style="box-shadow: 1px 1px 4px #888888;background-color:#00BFFF;position:fixed;top:3vh;height:17vh;width:100vw;right:0px;z-index:100">
+        <div class="row" style="">
+            <div style="background-color:white;padding-left:21vw;">
+                    <div id="logo"style="position:absolute;top:1vh;left:10vw" class="   ">
+                        <img id="logo-img" src="static/logo.png">
+                    </div>
+                    <span style="position:absolute;top:1vh;left:25vw"><h1 style=";line-height:1.5;font-family: 'Lato', sans-serif;font-weight:900;" >IIT Guwahati <br>Model United Nations</h1></span>
+            </div>      
+        </div>
+
+    </div>
+
+    <div class="col-lg-12 panel panel-default" style="top:24vh" >
+        <div class="panel-body" style="border-right:1px solid #eee; padding-right:4%">
+
+            <div class="">
+                <span data-spy="affix" style="position:relative;"><h3 align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px">General Speakers List</h3><br></span> 
+                <div id="gsl" style="height:72vh;overflow:hidden">
+                    <div align="center" style="overflow:auto">
+                        {% for speaker in gsl %}
+                        <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ speaker.filename }}.png">
+                        <h4>{{ speaker.country }}</h4><br><br>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

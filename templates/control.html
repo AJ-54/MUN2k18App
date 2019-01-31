@@ -5,87 +5,103 @@
 </head>
 <body>
 <div align="center" id="container">
-	<h1>Add Tweet</h1>
-	<form id="tweets" action="{{ url_for('handle_tweet') }}" method='post'>
-		<textarea name="tweet_content" rows="10" columns="30"></textarea><br>
-		<select name="tweet_poster" form="tweets">
-			{% for country in country_list %}
-			<option value="{{ country }}">{{ country }}</option>
-			{% endfor %}
-		</select>
-		<input type="submit">
-	</form>
-	<h1>Add Speaker</h1>
-	<form id="gsl_add" action="{{ url_for('handle_gsl_addition') }}" method='post'>
-		<select name="gsl_speaker" form="gsl_add">
-			{% for country in country_list %}
-			<option value="{{ country }}">{{ country }}</option>
-			{% endfor %}
-		</select>
-		<input type="submit">
-	</form>
-	<h1>Remove Speaker</h1>
-	<form id="gsl_remove" action="{{ url_for('handle_gsl_removal') }}" method='post'>
-		<select name="speaker_removed" form="gsl_remove">
-			{% for speaker in speakers_list %}
-			<option value="{{ speaker }}">{{ speaker }}</option>
-			{% endfor %}
-		</select>
-		<input type="submit">
-	</form>
-	<h1>Add Trending Topic</h1>
-	<form id="trending_add" action="{{ url_for('handle_trending_addition') }}" method='post'>
-		<input type="text" name="topic">
-		<input type="submit">
-	</form>
-	<h1>Remove Trending Topic</h1>
-	<form id="trending_remove" action="{{ url_for('handle_trending_removal') }}" method='post'>
-		<select name="trending_removed" form="trending_remove">
-			{% for topic in topics %}
-			<option value="{{ topic }}">{{ topic }}</option>
-			{% endfor %}
+	<div class="flex-container">
+		<div>
+		<h1>Add Tweet</h1>
+		<form id="tweets" action="{{ url_for('handle_tweet') }}" method='post'>
+			<textarea name="tweet_content" rows="10" columns="30"></textarea><br>
+			<select name="tweet_poster" form="tweets">
+				{% for country in country_list %}
+				<option value="{{ country }}">{{ country }}</option>
+				{% endfor %}
+			</select>
 			<input type="submit">
-	</form>
-
-	<h1>Add timer event</h1>
-	<form id="timer-add" action="{{ url_for('handle_timer') }}" method='post'>
-		<input type="text" name="timer_time"> m <br>
-
-		<select name="event" form="timer-add">
-			{% for event in events %}
-			<option value="{{ event }}">{{ event }}</option>
-			{% endfor %}
-		</select>
-		<input type="submit">
-	</form>
-	<h1>Remove Timer event</h1>
-	<form id="timer-remove" action="{{ url_for('handle_timer_removal') }}" method='post'>
-		<button type="submit">REMOVE TIMER</button>
-	</form>
-	<h1>Delete All Tweets</h1>
-	<form id="delete_tweets" action="{{ url_for('delete_tweets') }}" method='post'>
-		<button type="submit">DELETE</button>
-	</form>
-
-	<!-- REMOVE TWEET NO WORK 
-	<h1>Remove Tweet</h1>
-	<form id="tweet_remove" action="{{ url_for('handle_tweet_removal') }}" method='post'>
-		<select name="tweet_removed" form="tweet_remove">
-			{% for tweet in tweets %}
-			<option value="{{ topic }}">{{ tweet.conte }}</option>
-			{% endfor %}
+		</form>
+		</div>
+		<div>
+		<h1>Add Speaker</h1>
+		<form id="gsl_add" action="{{ url_for('handle_gsl_addition') }}" method='post'>
+			<select name="gsl_speaker" form="gsl_add">
+				{% for country in country_list %}
+				<option value="{{ country }}">{{ country }}</option>
+				{% endfor %}
+			</select>
 			<input type="submit">
-	</form>
-	-->
-	<h1>Remove Speaker From Total</h1>
-	<form id="gsl_remove" action="{{ url_for('handle_gsl_removal_total') }}" method='post'>
-		<select name="speaker_removed_total" form="gsl_remove_total">
-			{% for speaker in speakers_total %}
-			<option value="{{ speaker }}">{{ speaker }}</option>
-			{% endfor %}
-		</select>
-		<input type="submit">
-	</form>
+		</form>
+		</div>
+		<div>
+		<h1>Remove Speaker</h1>
+		<form id="gsl_remove" action="{{ url_for('handle_gsl_removal') }}" method='post'>
+			<select name="speaker_removed" form="gsl_remove">
+				{% for speaker in speakers_list %}
+				<option value="{{ speaker }}">{{ speaker }}</option>
+				{% endfor %}
+			</select>
+			<input type="submit">
+		</form>
+		</div>
+		<div>
+		<h1>Add Trending Topic</h1>
+		<form id="trending_add" action="{{ url_for('handle_trending_addition') }}" method='post'>
+			<input type="text" name="topic">
+			<input type="submit">
+		</form>
+		</div>
+		<div>
+		<h1>Remove Trending Topic</h1>
+		<form id="trending_remove" action="{{ url_for('handle_trending_removal') }}" method='post'>
+			<select name="trending_removed" form="trending_remove"/>
+				{% for topic in topics %}
+				<option value="{{ topic }}">{{ topic }}</option>
+				{% endfor %}
+				<input type="submit">
+		</form>
+		</div>
+		<div>
+		<h1>Add timer event</h1>
+		<form id="timer-add" action="{{ url_for('handle_timer') }}" method='post'>
+			<input type="text" name="timer_time"> m <br>
+
+			<select name="event" form="timer-add">
+				{% for event in events %}
+				<option value="{{ event }}">{{ event }}</option>
+				{% endfor %}
+			</select>
+			<input type="submit">
+		</form>
+		</div>
+		<div>
+		<h1>Remove Timer event</h1>
+		<form id="timer-remove" action="{{ url_for('handle_timer_removal') }}" method='post'>
+			<button type="submit">REMOVE TIMER</button>
+		</form>
+		<h1>Delete All Tweets</h1>
+		<form id="delete_tweets" action="{{ url_for('delete_tweets') }}" method='post'>
+			<button type="submit">DELETE</button>
+		</form>
+		</div>
+		<!-- REMOVE TWEET NO WORK 
+		<h1>Remove Tweet</h1>
+		<form id="tweet_remove" action="{{ url_for('handle_tweet_removal') }}" method='post'>
+			<select name="tweet_removed" form="tweet_remove">
+				{% for tweet in tweets %}
+				<option value="{{ topic }}">{{ tweet.conte }}</option>
+				{% endfor %}
+				<input type="submit">
+		</form>
+		-->
+		<div>
+		<h1>Remove Speaker From Total</h1>
+		<form id="gsl_remove" action="{{ url_for('handle_gsl_removal_total') }}" method='post'>
+			<select name="speaker_removed_total" form="gsl_remove_total">
+				{% for speaker in speakers_total %}
+				<option value="{{ speaker }}">{{ speaker }}</option>
+				{% endfor %}
+			</select>
+			<input type="submit">
+		</form>
+		</div>
+	</div>
 </div>
 </body>
 </html>

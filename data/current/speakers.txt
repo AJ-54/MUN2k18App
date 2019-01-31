@@ -1,18 +1,10 @@
 (lp0
-VGuatemala
+VSouth Korea
 p1
-aVSouth Africa
+aVChile
 p2
-aVMyanmar
+aVUganda
 p3
-aVDominican Republic
+aVCanada
 p4
-aVMalaysia
-p5
-aVUnited Kingdom
-p6
-aVSwitzerland
-p7
-aVUruguay
-p8
 a.
