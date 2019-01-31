@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Modify GSL</title>
+</head>
+<body>
+	<h1> GSL </h1>
+
+	<div>
+		{% for gsl_item in gsl %}
+		<div>
+			<div class="gsl_flex_container">
+			<form id="gsl_list_{{ gsl_item }}" action="{{ url_for('modify_gsl') }}" method='post'>
+					<div>{{ gsl_item }}</div>
+					<div>
+						<select name="countries_list" form="gsl_list_{{ gsl_item }}">
+							{% for country in country_list %}
+							<option {% if country == gsl_item %} selected {% endif %} value="{{ country }}">{{ country }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div>
+						<button type='submit'>Remove {{ gsl_item }}</button>
+					</div>
+			</form>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<br><br><br><br>
+	<form id="add_speaker" action="{{ url_for('modify_gsl') }}" method='post'>
+		<select name='countries_list_add' form='add_speaker'>
+			{% for country in country_list %}
+			<option value="{{ country }}">{{ country }}</option>
+			{% endfor %}
+		</select>
+		<button type='submit'>Add Speaker</button>
+	</form>
+
+	<br><br><br>
+	<form id="modify" action="{{ url_for('modify_gsl') }}" method='post'>
+		<button type="submit">MODIFY LIST</button>
+	</form>
+
+
+</body>
+</html>

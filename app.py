@@ -124,7 +124,6 @@ def handle_gsl_removal():
 
 @app.route('/handle_gsl_removal_total', methods=['POST'])
 def handle_gsl_removal_total():
-	print(dict(request.form))
 	speaker = request.form['speaker_removed_total']
 	speakers_list = get_gsl_list("speakers_total.txt")
 
@@ -209,6 +208,18 @@ def handle_tweet_removal():
 			return render_template('success.html', action="removed from", category="tweets", item_added=tweet)
 
 	return "This should never happen"
+
+@app.route('/modify_gsl', methods=['GET'])
+def modify_gsl():
+	gsl = get_gsl_list("speakers.txt")
+	country_list = get_country_list()
+
+	return render_template('modify_gsl.html', gsl=gsl, country_list=country_list)
+
+@app.route('/modify_gsl', methods=['POST'])
+def modify_gsl_post():
+	print("HERE", request.form)
+	return "HERE2"
 
 if __name__ == "__main__":
 	app.run(debug=True)

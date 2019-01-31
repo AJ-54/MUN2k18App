@@ -50,10 +50,11 @@
 		<div>
 		<h1>Remove Trending Topic</h1>
 		<form id="trending_remove" action="{{ url_for('handle_trending_removal') }}" method='post'>
-			<select name="trending_removed" form="trending_remove"/>
+			<select name="trending_removed" form="trending_remove">
 				{% for topic in topics %}
 				<option value="{{ topic }}">{{ topic }}</option>
 				{% endfor %}
+			</select>
 				<input type="submit">
 		</form>
 		</div>
