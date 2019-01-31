@@ -3,8 +3,6 @@ VSouth Korea
 p1
 aVChile
 p2
-aVUganda
-p3
 aVCanada
-p4
+p3
 a.

@@ -109,6 +109,7 @@ def handle_gsl_addition():
 
 @app.route('/handle_gsl_removal', methods=['POST'])
 def handle_gsl_removal():
+	print(dict(request.form))
 	speaker = request.form['speaker_removed']
 	speakers_list = get_gsl_list("speakers.txt")
 
@@ -123,6 +124,7 @@ def handle_gsl_removal():
 
 @app.route('/handle_gsl_removal_total', methods=['POST'])
 def handle_gsl_removal_total():
+	print(dict(request.form))
 	speaker = request.form['speaker_removed_total']
 	speakers_list = get_gsl_list("speakers_total.txt")
 

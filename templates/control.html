@@ -92,7 +92,7 @@
 		-->
 		<div>
 		<h1>Remove Speaker From Total</h1>
-		<form id="gsl_remove" action="{{ url_for('handle_gsl_removal_total') }}" method='post'>
+		<form id="gsl_remove_total" action="{{ url_for('handle_gsl_removal_total') }}" method='post'>
 			<select name="speaker_removed_total" form="gsl_remove_total">
 				{% for speaker in speakers_total %}
 				<option value="{{ speaker }}">{{ speaker }}</option>

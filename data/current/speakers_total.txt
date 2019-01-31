@@ -1,10 +1,8 @@
 (lp0
-VSouth Korea
+VChile
 p1
-aVChile
-p2
 aVUganda
-p3
+p2
 aVCanada
-p4
+p3
 a.
