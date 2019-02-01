@@ -1,13 +1,13 @@
 (dp0
 S'end_time'
 p1
-S'lorem_ipsum'
+S'Jan 31, 2019 23:13:12'
 p2
 sS'exists'
 p3
-I00
+I01
 sS'event'
 p4
-S'Lorem ipsum'
+VUnmoderated Caucus
 p5
 s.

@@ -53,6 +53,7 @@ def main():
 		first_trending = trending_topics[0]
 		trending_topics = trending_topics[1:]
 
+	print(speakers_list)
 	return render_template('index.html', tweets=reversed(tweets),
 							countries=countries, timestamps=timestamps,
 							gsl=speakers_list, gsl_top=first_gsl, trending=trending_topics,
@@ -67,7 +68,6 @@ def control():
 	countries = get_country_list()
 	trending_topics = get_trending_topics()
 	tweets = get_tweets_list()
-	timer_events = ["Unmoderated Caucus", "Moderated Caucus", "Conference", "Current Session"]
 
 	return render_template('control.html', tweets=tweets, speakers_list=gsl_speakers_list, country_list=countries, topics=trending_topics, events=timer_events, speakers_total=gsl_speakers_list_total)
 
@@ -218,8 +218,32 @@ def modify_gsl():
 
 @app.route('/modify_gsl', methods=['POST'])
 def modify_gsl_post():
-	print("HERE", request.form)
-	return "HERE2"
+	form = dict(request.form)
+	print(form)
+
+	gsl = get_gsl_list("speakers.txt")
+
+	if 'remove' in form.keys():
+		speaker = form['remove'][0]
+		if speaker in gsl:
+			gsl.remove(str(speaker))
+			write_gsl_list(gsl, 'speakers.txt')
+
+	elif 'modify' in form.keys():
+		if 'country' in form.keys():
+			gsl = form['country']
+			write_gsl_list(gsl, 'speakers.txt')
+
+	elif 'add' in form.keys():
+		if 'countries_list_add' in form.keys():
+			gsl.append(form['countries_list_add'][0])
+		else:
+			gsl.append('None')
+		write_gsl_list(gsl, 'speakers.txt')
+
+	country_list = get_country_list()
+
+	return render_template('modify_gsl.html', gsl=gsl, country_list=country_list)
 
 if __name__ == "__main__":
 	app.run(debug=True)

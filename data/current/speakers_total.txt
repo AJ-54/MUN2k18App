@@ -1,8 +1,6 @@
 (lp0
-VChile
+VIndia
 p1
-aVUganda
+aVSlovenia
 p2
-aVCanada
-p3
 a.

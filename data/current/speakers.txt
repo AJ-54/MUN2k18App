@@ -1,8 +1,4 @@
 (lp0
-VSouth Korea
+VKokrajhar (Assam)
 p1
-aVChile
-p2
-aVCanada
-p3
 a.

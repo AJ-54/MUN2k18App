@@ -6,41 +6,44 @@
 <body>
 	<h1> GSL </h1>
 
-	<div>
+	<div class='flex-container-gsl'>
+		<form id="gsl_list" action="{{ url_for('modify_gsl') }}" method='post'>
+		<ol>
 		{% for gsl_item in gsl %}
+		<li>
 		<div>
 			<div class="gsl_flex_container">
-			<form id="gsl_list_{{ gsl_item }}" action="{{ url_for('modify_gsl') }}" method='post'>
 					<div>{{ gsl_item }}</div>
 					<div>
-						<select name="countries_list" form="gsl_list_{{ gsl_item }}">
+						<select name="country" form="gsl_list">
 							{% for country in country_list %}
 							<option {% if country == gsl_item %} selected {% endif %} value="{{ country }}">{{ country }}</option>
 							{% endfor %}
 						</select>
 					</div>
 					<div>
-						<button type='submit'>Remove {{ gsl_item }}</button>
+						<button type='submit' name='remove' value='{{ gsl_item }}'>Remove {{ gsl_item }}</button>
 					</div>
-			</form>
 			</div>
 		</div>
+		</li>
 		{% endfor %}
+		</ol>
 	</div>
+
+	<br><br><br>
+		<button type="submit" name='modify'>MODIFY LIST</button>
+	</form>
 
 	<br><br><br><br>
 	<form id="add_speaker" action="{{ url_for('modify_gsl') }}" method='post'>
 		<select name='countries_list_add' form='add_speaker'>
+			<option disabled selected>None</option>
 			{% for country in country_list %}
 			<option value="{{ country }}">{{ country }}</option>
 			{% endfor %}
 		</select>
-		<button type='submit'>Add Speaker</button>
-	</form>
-
-	<br><br><br>
-	<form id="modify" action="{{ url_for('modify_gsl') }}" method='post'>
-		<button type="submit">MODIFY LIST</button>
+		<button type='submit' name='add'>Add Speaker</button>
 	</form>
 
 

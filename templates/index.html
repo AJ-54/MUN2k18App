@@ -37,11 +37,11 @@
                         <span data-spy="affix" style="position:relative;"><h3 align="center" style="font-weight:normal;border-width:2px;border-style:solid;border-radius:10px;border-color:#00BFFF;padding:5px">General Speakers List</h3><br></span> 
                         <div id="gsl" style="height:72vh;overflow:hidden">
                             <div align="center" style="overflow:auto">
-                                {% if gsl_top %}
+                                {% if gsl_top and not gsl_top=='None' %}
                                 <img class="flag" style="max-width:50px;max-height:50px" src="/static/flags/{{ gsl_top_filename }}.png">
                                 <h2>{{ gsl_top }}</h2><br><br>
                                 {% endif %}
-                                {% for speaker in gsl %}
+                                {% for speaker in gsl if not speaker.country=="None" %}
                                 <img class="flag" style="max-width:30px;max-height:30px" src="/static/flags/{{ speaker.filename }}.png">
                                 <h4>{{ speaker.country }}</h4><br><br>
                                 {% endfor %}

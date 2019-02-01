@@ -1,12 +1,2 @@
 (lp0
-Vdsklfj
-p1
-aVdsajkhfl kkljk
-p2
-aVdfjk ksdjf lk
-p3
-aVsdkj fklsdj 
-p4
-aVsadkj flks j
-p5
-a.
+.

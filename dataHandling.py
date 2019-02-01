@@ -1,9 +1,22 @@
 import os
 import pickle
 
-country_matrix_filename = "countries_unhrc_2018_workshop.txt"
-country_to_filename = {"Democratic Republic of Congo":"Democratic-Republic-of-the-Congo",
+timer_events = ["Unmoderated Caucus", 
+				"Moderated Caucus", 
+				"Conference", 
+				"Current Session",
+				"Lunch Break"]
+
+country_matrix_filename = "const_loksabha.txt"
+country_to_filename = {"Electronic Frontier Foundation":"eff",
+					   "Democratic Republic of Congo":"Democratic-Republic-of-the-Congo",
+					   "Human Rights Watch":"hrw",
 					   "Dominican Republic":"Dominican-Republic",
+					   "Democratic People's Republic of Korea": "North-Korea",
+					   "DPRK":"North-Korea",
+					   "Republic of Korea":"South-Korea",
+					   "Russian Federation":"Russia",
+					   "Amnesty International":"amnesty",
 					   "Burkina Faso":"Burkina-Faso",
 					   "South Africa":"South-Africa",
 					   "Saudi Arabia":"Saudi-Arabia",
@@ -34,16 +47,15 @@ country_to_filename = {"Democratic Republic of Congo":"Democratic-Republic-of-th
 					   "South Sudan":"South-Sudan",
 					   "Czech Republic":"Czech-Republic",
 					   "Bosnia and Herzegovina":"Bosnia-and-Herzegovina",
+					   "Scottish Fair Trade Forum":"scottish-fair-trade-forum",
+					   "Consular Association of Northern Ireland":"ca-ni",
 					   }
 
-party_status = {"Aam_Aadmi_Party":["Patiala (Punjab)"],
-				"All_India_Trinamool_Congress":["Jadavpur (West Bengal)", "Balurghat (West Bengal)"],
-				"AIUDF":["Barpeta (Assam)", "Karimganj (SC)(Assam)"],
-				"Apna_Dal":["Mirzapur (Uttar Pradesh)"],
-				"Bharatiya_Janata_Party":["Ahmedabad East (Gujarat)", "Arunachal West (Arunachal Pradesh)","Bangalore Central (Karnataka)","Beed (Maharashtra)","Chandigarh (Chandigarh)","Dibrugarh (Assam)","Gandhinagar (Gujarat)","Gauhati (Assam)","Hardwar (Uttarakhand)","Indore (Madhya Pradesh)","Jaipur (Rajasthan)","Jamnagar (Gujarat)","Jorhat (Assam)","Mathura (Uttar Pradesh)","New Delhi (NCT of Delhi)","Patna Sahib (Bihar)","Shimoga (Karnataka)","Tezpur (Assam)","Vadodara (Gujarat)","Vidisha (Madhya Pradesh)"],
-				"Biju_Janata_Dal":["Balasore","Puri (Odisha)"],
-				"Indian_National_Congress":["Alappuzha (Kerala)","Amritsar (Punjab)","Arunachal East (Arunachal Pradesh)","Gulbarga (Karnataka)","Guna (Madhya Pradesh)","Inner Manipur (Manipur)","Jangipur (West Bengal)","Kishanganj (Bihar)","Rohtak (Haryana)","Silchar (Assam)","Thiruvananthapuram (Kerala)"],
-				"RSP":["Kollam (Kerala)"]
+party_status = {"AITC":['Balurghat (West Bengal)', 'Bangaon (SC)(West Bengal)', 'Howrah (West Bengal)'],
+				"AIADMK":['Chennai Central (Tamilnadu)', 'Chennai South (Tamilnadu)', 'Coimbatore (Tamilnadu)', 'Salem (Tamilnadu)', 'Tenkasi (Tamilnadu)', 'Vellore (Tamilnadu)', 'Tiruvannamalai (Tamilnadu)', 'Ramanathapuram(Tamilnadu)', 'Erode(Tamilnadu)', 'Chennai North(Tamilnadu)', 'Madurai(Tamilnadu)', 'Namakkal(Tamilnadu)'],
+				"BJP":['Agra (Uttar Pradesh)', 'Ahmedabad East (Gujarat)', 'Aligarh (Uttar Pradesh)', 'Andaman and Nicobar Islands (Andaman and Nicobar Islands)', 'Arunachal West (Arunachal Pradesh)', 'Bareilly (Uttar Pradesh)', 'Beed (Maharashtra)', 'Chandigarh (Chandigarh)', 'Dadra and Nagar Haveli (ST)(Dadra and Nagar Haveli)', 'Dibrugarh (Assam)', 'Gandhinagar (Gujarat)', 'Gwalior (Madhya Pradesh)', 'Jamshedpur (Jharkhand)', 'Janjgir-Champa (SC)(Chhattisgarh)', 'Lucknow (Uttar Pradesh)', 'Mathura (Uttar Pradesh)', 'Meerut (Uttar Pradesh)', 'North East Delhi (NCT of Delhi)', 'Pilibhit (Uttar Pradesh)', 'Pune (Maharashtra)', 'Ranchi (Jharkhand)', 'Tezpur (Assam)', 'Ujjain (SC)(Madhya Pradesh)', 'Kanpur (Uttar Pradesh)'],
+				"INC":['Alappuzha (Kerala)', 'Amethi (Uttar Pradesh)', 'Autonomous District (ST)(Assam)', 'Gulbarga (Karnataka)', 'Inner Manipur (Manipur)', 'Jalandhar (Punjab)', 'Kaliabor (Assam)', 'Kishanganj (Bihar)', 'Ludhiana (Punjab)', 'Rae Bareli (Uttar Pradesh)', 'Thiruvananthapuram (Kerala)'],
+				"Independent":"Kokrajhar (Assam)",
 				}
 
 home_dir = os.getcwd()

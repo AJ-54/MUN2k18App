@@ -1,74 +1,25 @@
-Kenya
-Tanzania
-Ethiopia
-Algeria
-Rwanda
-Democratic republic of the Congo
-Burkina Fasa
-Botswana
-South Africa
-Nigeria
-Zimbabwe
-Saudi Arabia
-Kuwait
-South Korea
-Bhutan
-North Korea
-Lebanon
-Cambodia
-Malaysia
-China
-Indonesia
-Georgia
-Thailand
-Iran
-Oman
-Turkey
-Iraq
-Pakistan
-Vietnam
-Israel
-Phillipines
-Kyrgyzstan
-Japan
-Russia
-India
-UAE
-Australia
-New Zealand
 Austria
-France
-Belgium
-Spain
 Bulgaria
-Greece
-Italy
-Germany
-Switzerland
-Denmark
-Netherlands
-United Kingdom
-Sweden
-Portugal
-Ireland
-Finland
+China
+Consular Association of Northern Ireland
+Czech Republic
 Estonia
-Latvia
-Canada
+France
+Germany
+Hungary
+India
+Ireland
+Italy
+Romania
+Scottish Fair Trade Forum
+Spain
+Sweden
+United Kingdom
 United States of America
-Honduras
-Antigua and Barbuda
-Panama
-Argentina
-Chile
-Colombia
-Brazil
-Peru
-Guyana
-Trinidad and Tobago
-International Press
-International Telecom Union
-OpenAI
-Future of Life Institute
-International Labor Organization
-AI100
+Portugal
+Poland
+Netherlands
+Russia
+Belgium
+Turkey
+Finland
